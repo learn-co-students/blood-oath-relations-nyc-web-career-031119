@@ -36,4 +36,8 @@ class Follower
   def my_cults_slogans
     cults.map{|cult| cult.slogan}
   end
+
+  def self.most_active
+    all.sort_by{|follower| follower.cults.length}[-1]
+  end
 end
