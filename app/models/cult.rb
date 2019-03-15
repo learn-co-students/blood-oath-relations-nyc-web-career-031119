@@ -1,5 +1,5 @@
 class Cult
-  attr_accessor :name, :location, :founding_year, :slogan, :follower_list
+  attr_accessor :name, :location, :founding_year, :slogan, :follower_list, :blood_oath_list
 
   @@all = []
   def initialize(name, location, founding_year, slogan)
@@ -8,12 +8,17 @@ class Cult
     @founding_year = founding_year
     @slogan = slogan
     @follower_list = []
+    @blood_oath_list = []
     @@all << self
 
   end
 
-  def recruit_follower(follower)
+  def recruit_follower(follower, date)
     @follower_list << follower
+    new_oath = BloodOath.new(date, follower, self)
+    @blood_oath_list << new_oath
+    @follower_list << follower
+    follower.cult_list << self
   end
 
   def cult_population

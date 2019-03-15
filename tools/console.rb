@@ -31,9 +31,9 @@ children_of_god = Cult.new("Children of God", "New York", 2019, "Drink the Kool-
 # # ok_cult.recruit_follower("Sarah")
 # # ok_cult.recruit_follower("Lisa")
 
-xavier.join_cult(children_of_god)
-tom.join_cult(children_of_god)
-joe.join_cult(children_of_god)
+xavier.join_cult(children_of_god, 01-01-2018)
+tom.join_cult(children_of_god, 06-01-1998)
+joe.join_cult(children_of_god, 02-18-2001)
 
 binding.pry
 
