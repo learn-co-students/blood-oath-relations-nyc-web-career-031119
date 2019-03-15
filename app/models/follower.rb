@@ -40,4 +40,8 @@ class Follower
   def self.most_active
     all.sort_by{|follower| follower.cults.length}[-1]
   end
+
+  def self.top_ten
+    all.sort_by{|follower| follower.cults.length}.last(10)
+  end
 end
