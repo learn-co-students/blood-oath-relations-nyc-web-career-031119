@@ -37,11 +37,15 @@ class Follower
     cults.map{|cult| cult.slogan}
   end
 
+  def self.sort_by_cult_count
+    all.sort_by{|follower| follower.cults.length}
+  end
+
   def self.most_active
-    all.sort_by{|follower| follower.cults.length}[-1]
+    sort_by_cult_count[-1]
   end
 
   def self.top_ten
-    all.sort_by{|follower| follower.cults.length}.last(10)
+    sort_by_cult_count.last(10)
   end
 end

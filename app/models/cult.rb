@@ -15,10 +15,14 @@ class Cult
     BloodOath.new(date, self, follower)
   end
 
-  def cult_population
+  def blood_oaths
     BloodOath.all.select do |oath|
       oath.cult == self
-    end.length
+    end
+  end
+
+  def cult_population
+      blood_oaths.length
   end
 
   def self.all
@@ -44,17 +48,13 @@ class Cult
   end
 
   def average_age
-    BloodOath.all.select do |oath|
-        oath.cult == self
-    end.map do |oath|
+    blood_oaths.map do |oath|
       oath.follower.age
     end.reduce(:+)/cult_population.to_f
   end
 
   def my_followers_mottos
-    BloodOath.all.select do |oath|
-        oath.cult == self
-    end.map do |oath|
+    blood_oaths.map do |oath|
       oath.follower.life_motto
     end
   end
