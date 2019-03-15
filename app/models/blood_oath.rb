@@ -14,5 +14,7 @@ class BloodOath
     @@all
   end
 
-  
+  def new_oath
+    
+  end
 end

@@ -17,7 +17,6 @@ class Cult
     @follower_list << follower
     new_oath = BloodOath.new(date, follower, self)
     @blood_oath_list << new_oath
-    @follower_list << follower
     follower.cult_list << self
   end
 
