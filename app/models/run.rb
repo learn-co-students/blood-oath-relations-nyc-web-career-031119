@@ -6,6 +6,9 @@ require 'bloodoath.rb'
 cult1 = Cult.new("cult1", "new york", 2019, 'live fast, die young')
 cult2 = Cult.new("cult2", "los angeles", 2019, 'learn love code')
 cult3 = Cult.new("cult3", "chicago", 2019, 'michael jordan forever')
+cult4 = Cult.new("cult4", "new york", 2019, 'yeet')
+cult5 = Cult.new("cult5", "chicago", 2019, 'new york sucks')
+cult6 = Cult.new("cult6", "chicago", 2019, 'chicago forever')
 
 follower1 = Follower.new("john", 20, "yolo")
 follower2 = Follower.new("dave", 23, "yolo")
@@ -32,6 +35,10 @@ follower2.join_cult("2019-03-02",cult3)
 # Cult.find_by_name("cult1")
 # Cult.find_by_location("new york")
 # Cult.find_by_founding_year(2019)
+# cult1.average_age
+# cult1.my_followers_mottos
+# Cult.least_popular
+# Cult.most_common_location
 
 # follwer1.cults
 # Follower.all

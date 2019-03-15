@@ -62,4 +62,10 @@ class Cult
   def self.least_popular
     all.sort_by{|cult| cult.cult_population}[0]
   end
+
+  def self.most_common_location
+    all.map do
+      |cult| cult.location
+    end.each_with_object(Hash.new(0)) {|location,count|count[location] +=1}.sort_by {|location,count| count}[-1][0]
+  end
 end
