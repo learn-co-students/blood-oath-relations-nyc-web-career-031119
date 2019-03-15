@@ -58,4 +58,8 @@ class Cult
       oath.follower.life_motto
     end
   end
+
+  def self.least_popular
+    all.sort_by{|cult| cult.cult_population}[0]
+  end
 end
