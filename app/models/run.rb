@@ -14,15 +14,15 @@ follower4 = Follower.new("sam", 19, "yolo")
 follower5 = Follower.new("jack", 21, "yolo")
 follower6 = Follower.new("vera", 30, "yolo")
 
-cult1.recruit_follower(2019,follower1)
-cult2.recruit_follower(2019,follower2)
-cult1.recruit_follower(2019,follower3)
-cult3.recruit_follower(2019,follower4)
+cult1.recruit_follower("2019-01-01",follower1)
+cult2.recruit_follower("2019-03-11",follower2)
+cult1.recruit_follower("2019-02-10",follower3)
+cult3.recruit_follower("2019-01-21",follower4)
 
-follower3.join_cult(2019,cult2)
-follower4.join_cult(2019,cult2)
-follower6.join_cult(2019,cult3)
-follower2.join_cult(2019,cult3)
+follower3.join_cult("2019-01-05",cult2)
+follower4.join_cult("2019-03-14",cult2)
+follower6.join_cult("2019-02-28",cult3)
+follower2.join_cult("2019-03-02",cult3)
 
 
 # TESTS-----------------------
