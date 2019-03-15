@@ -42,4 +42,12 @@ class Cult
       cult.founding_year == founding_year
     end
   end
+
+  def average_age
+    BloodOath.all.select do |oath|
+        oath.cult == self
+    end.map do |oath|
+      oath.follower.age
+    end.reduce(:+)/cult_population.to_f
+  end
 end
