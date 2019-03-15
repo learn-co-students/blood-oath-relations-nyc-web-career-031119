@@ -32,4 +32,8 @@ class Follower
       follower.age >= age
     end
   end
+
+  def my_cults_slogans
+    cults.map{|cult| cult.slogan}
+  end
 end
