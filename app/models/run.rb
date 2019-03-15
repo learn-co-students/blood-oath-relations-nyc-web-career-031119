@@ -3,9 +3,9 @@ require 'cult.rb'
 require 'bloodoath.rb'
 
 
-cult1 = Cult.new("cult1", "new york", 2019)
-cult2 = Cult.new("cult2", "los angeles", 2019)
-cult3 = Cult.new("cult3", "chicago", 2019)
+cult1 = Cult.new("cult1", "new york", 2019, 'live fast, die young')
+cult2 = Cult.new("cult2", "los angeles", 2019, 'learn love code')
+cult3 = Cult.new("cult3", "chicago", 2019, 'michael jordan forever')
 
 follower1 = Follower.new("john", 20, "yolo")
 follower2 = Follower.new("dave", 23, "yolo")
