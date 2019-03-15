@@ -10,15 +10,14 @@ class Follower
   end
 
   def join_cult(cult)
-    BloodOath.new(cult, self, "2043-12-12")
+    date = Time.now.strftime '%Y-%m-%d'
+    BloodOath.new(cult, self, date)
   end
 
   def cults
-    BloodOath.all.map do |bloodoath|
-      if bloodoath.follower == self
-        bloodoath.cult
-      end
-    end.compact
+    bloodoaths.maps do |bloodoath|
+      bloodoath.cult
+    end
   end
 
   def self.all
@@ -28,6 +27,12 @@ class Follower
   def self.of_a_certain_age(age)
     BloodOath.all.select do |bloodoath|
       bloodoath.follower.age >= age
+    end
+  end
+
+  def bloodoaths
+    BloodOath.all.select do |bloodoath|
+      bloodoath.follower == self
     end
   end
 end
