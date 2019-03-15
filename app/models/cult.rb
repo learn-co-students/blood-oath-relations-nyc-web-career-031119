@@ -50,4 +50,12 @@ class Cult
       oath.follower.age
     end.reduce(:+)/cult_population.to_f
   end
+
+  def my_followers_mottos
+    BloodOath.all.select do |oath|
+        oath.cult == self
+    end.map do |oath|
+      oath.follower.life_motto
+    end
+  end
 end
