@@ -15,8 +15,8 @@ class Follower
     @cult_list
   end
 
-  def blood_oaths
-    @blood_oath_list
+  def blood_oaths_number
+    @blood_oath_list.length
   end
 
   def join_cult(cult, date)

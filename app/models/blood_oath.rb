@@ -13,8 +13,4 @@ class BloodOath
   def self.all
     @@all
   end
-
-  def new_oath
-    
-  end
 end

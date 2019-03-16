@@ -20,6 +20,20 @@ class Cult
     follower.cult_list << self
   end
 
+  def average_age
+    sum = 0.00
+    @follower_list.map do |follower|
+      sum += follower.age
+    end
+    sum / follower_list.length
+  end
+
+  def my_followers_mottos
+    @follower_list.each do |follower|
+      puts follower.life_motto
+    end
+  end
+
   def cult_population
     @follower_list.length
   end
@@ -44,6 +58,13 @@ class Cult
     @@all.select do |cult|
       cult.founding_year == year
     end
+  end
+
+  def self.least_popular
+    @@all.sort_by! do |cult|
+      cult.follower_list.length
+    end
+    @@all[0]
   end
 
 end
