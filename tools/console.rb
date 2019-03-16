@@ -7,34 +7,25 @@ end
 # This is a convenient place to define variables and/or set up new object instances,
 # so they will be available to test and play around with in your console
 
-xavier = Follower.new("Xavier", 25, "Let's play Smash Bros.")
-tom = Follower.new("Tom", 34, "Life is but a dream.")
-joe = Follower.new("Joe", 25, "John Joseph Jingle Heimer Schmit")
-sarah = Follower.new("Sarah", 30, "I like life.")
-#
-children_of_god = Cult.new("Children of God", "New York", 2019, "Drink the Kool-Aid")
-# # children_of_god.recruit_follower(xavier)
-# # children_of_god.recruit_follower(tom)
-# # children_of_god.recruit_follower(joe)
-# #
-# best_cult = Cult.new("Best Cult", "Chicago", 2017, "Pizzzzza")
-# # best_cult.recruit_follower("Bob")
-# # best_cult.recruit_follower("Tom")
-# # best_cult.recruit_follower("Robert")
-# #
-# worst_cult = Cult.new("Worst Cult", "New York", 1980, "This cult sucks.")
-# # worst_cult.recruit_follower("Xavier")
-# # worst_cult.recruit_follower("Tom")
-# # worst_cult.recruit_follower("Joe")
-# #
-# ok_cult = Cult.new("Ok Cult", "New York", 2017, "This cult is ok.")
-# # ok_cult.recruit_follower("Sarah")
-# # ok_cult.recruit_follower("Lisa")
+ali = Follower.new("Ali", 25, "Poodles 4 Ever")
+chris = Follower.new("Chris", 25, "Y0L0")
+john = Follower.new("John", 27, "Life is good.")
+sarah = Follower.new("Sarah", 29, "I am the best.")
+lisa = Follower.new("Lisa", 23, "I'm a cult enthusiast.")
 
-xavier.join_cult(children_of_god, 01-01-2018)
-tom.join_cult(children_of_god, 06-01-1998)
-joe.join_cult(children_of_god, 02-18-2001)
+flatiron = Cult.new("Flatiron", "Manhattan", 2012, "Learn Love Code")
+hackreactor = Cult.new("Hack Reactor", "San Francisco", 2013, "We love code!")
+gracehopper = Cult.new("Grace Hopper", "Manhattan", 2015, "They'rrrrre Great!")
 
+alibo = BloodOath.new(ali, flatiron)
+chrisbo = BloodOath.new(chris, flatiron)
+johnbo = BloodOath.new(john, flatiron)
+johnbo = BloodOath.new(john, hackreactor)
+sarahbo_flatiron = BloodOath.new(sarah, flatiron)
+sarahbo_hackreactor = BloodOath.new(sarah, hackreactor)
+lisabo_flatiron = BloodOath.new(lisa, flatiron)
+lisabo_hackreactor = BloodOath.new(lisa, hackreactor)
+lisabo_gh = BloodOath.new(lisa, gracehopper)
 binding.pry
 
 puts "Mwahahaha!" # just in case pry is buggy and exits

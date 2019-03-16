@@ -1,38 +1,57 @@
 class Follower
-  attr_accessor :name, :age, :life_motto, :blood_oath_list, :cult_list
+  attr_accessor :name, :age, :life_motto
 
   @@all = []
   def initialize(name, age, life_motto)
     @name = name
     @age = age
     @life_motto = life_motto
-    @cult_list = []
-    @blood_oath_list = []
     @@all << self
   end
 
+  def bloodoaths
+    BloodOath.all.select do |bloodoath|
+      bloodoath.follower == self
+    end
+  end
+
   def cults
-    @cult_list
+    self.bloodoaths.map do |bloodoath|
+      bloodoath.cult
+    end
   end
 
-  def blood_oaths_number
-    @blood_oath_list.length
-  end
-
-  def join_cult(cult, date)
-    new_oath = BloodOath.new(date, cult, self)
-    @blood_oath_list << new_oath
-    @cult_list << cult
-    cult.follower_list << self
+  def join_cult(cult)
+    BloodOath.new(self, cult)
   end
 
   def self.all
     @@all
   end
 
+  def my_cults_slogans
+    self.bloodoaths.map do |bloodoath|
+      bloodoath.cult.slogan
+    end
+  end
+
   def self.of_a_certain_age(age)
     @@all.select do |follower|
       follower.age == age
     end
+  end
+
+  def self.sorted_by_oath_count
+    @@all.sort_by! do |follower|
+      follower.bloodoaths.count
+    end
+  end
+
+  def self.most_active
+    sorted_by_oath_count.last
+  end
+
+  def self.top_ten
+    sorted_by_oath_count.slice(0..9).reverse
   end
 end

@@ -1,5 +1,5 @@
 class Cult
-  attr_accessor :name, :location, :founding_year, :slogan, :follower_list, :blood_oath_list
+  attr_accessor :name, :location, :founding_year, :slogan
 
   @@all = []
   def initialize(name, location, founding_year, slogan)
@@ -7,39 +7,48 @@ class Cult
     @location = location
     @founding_year = founding_year
     @slogan = slogan
-    @follower_list = []
-    @blood_oath_list = []
     @@all << self
 
   end
 
-  def recruit_follower(follower, date)
-    @follower_list << follower
-    new_oath = BloodOath.new(date, follower, self)
-    @blood_oath_list << new_oath
-    follower.cult_list << self
+  def recruit_follower(follower)
+    BloodOath.new(follower, self)
   end
 
-  def average_age
-    sum = 0.00
-    @follower_list.map do |follower|
-      sum += follower.age
-    end
-    sum / follower_list.length
-  end
-
-  def my_followers_mottos
-    @follower_list.each do |follower|
-      puts follower.life_motto
+  # Helper method
+  def bloodoaths
+    BloodOath.all.select do |bloodoath|
+      bloodoath.cult == self
     end
   end
 
   def cult_population
-    @follower_list.length
+    self.bloodoaths.length
+  end
+
+  # Helper method
+  def followers
+    self.bloodoaths.map do |bloodoath|
+      bloodoath.follower
+    end
+  end
+
+  def my_follower_mottos
+    self.followers.map do |follower|
+      follower.life_motto
+    end
   end
 
   def self.all
     @@all
+  end
+
+  def average_age
+    sum = 0.00
+    self.followers.each do |follower|
+      sum += follower.age
+    end
+    sum / self.cult_population
   end
 
   def self.find_by_name(name)
@@ -62,9 +71,14 @@ class Cult
 
   def self.least_popular
     @@all.sort_by! do |cult|
-      cult.follower_list.length
-    end
-    @@all[0]
+      cult.cult_population
+    end.first
+  end
+
+  def self.most_common_location
+    @@all.sort_by! do |cult|
+      find_by_location(cult.location).count
+    end.last.location
   end
 
 end
