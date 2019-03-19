@@ -1,7 +1,8 @@
 class Cult
 
-  attr_accessor :name, :location, :slogan, :followers, :minimum_age
+  attr_accessor :name, :location, :slogan, :minimum_age
   attr_reader :founded
+  attr_writer :followers
 
   @@all = []
 
@@ -9,7 +10,6 @@ class Cult
     @name = name
     @location = location
     @founded = founded
-    @followers = []
     @@all << self
     @minimum_age = 5
 
@@ -17,20 +17,22 @@ class Cult
 
   def recruit_follower(newguy)
     BloodOath.new(self, newguy).exectute_ceremony
-    # @followers << newguy
   end
 
-  # def followers
-  #   BloodOath.all.select { |bo| bo.cult == self}
-  # end
+  def blood_oaths
+    BloodOath.all.select { |bo| bo.cult == self }
+  end
+
+  def followers
+    blood_oaths.map { |bo| bo.follower  }
+  end
 
   def cult_population
     @followers.length
   end
 
   def average_age
-    followers.reduce(0.0){|sum, follower| sum + follower.age} / followers.length
-    # followers.sum(0.0) {|follower| follower.age} / followers.length
+    followers.sum(0.0) {|follower| follower.age} / followers.length
   end
 
   def my_followers_mottos

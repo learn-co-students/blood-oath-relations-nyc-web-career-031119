@@ -12,11 +12,12 @@ class Follower
     @@all << self
   end
 
+  def blood_oaths
+    BloodOath.all.select { |bo| bo.follower == self }
+  end
+
   def cults
-    # BloadOath.
-    Cult.all.select do |cult|
-      cult.followers.include?(self)
-    end
+    blood_oaths.map { |bo| bo.cult }
   end
 
   def cult_count
@@ -25,7 +26,6 @@ class Follower
 
   def join_cult(new_cult)
     BloodOath.new(new_cult, self).exectute_ceremony
-    # new_cult.followers << self
   end
 
   def my_cults_slogans
