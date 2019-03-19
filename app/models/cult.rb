@@ -30,16 +30,16 @@ class Cult
     end
 
     def self.find_by_name(given_name)
-        self.all.find { |name| name == given_name }
+        self.all.find { |c| c.name == given_name }
     end
 
 
     def self.find_by_location(given_location)
-        @@all.find { |location| location == given_location }
+        self.all.find { |c| c.location == given_location }
     end
 
-    def self.find_by_founding_year
-
+    def self.find_by_founding_year(year)
+      self.all.select{|c|c.founding_year == year}
     end
 
 
