@@ -71,9 +71,13 @@ class Cult
   end
 
   def self.all_cults_with_followers
-    BloodOath.all.map do |a|
-      a.cult
+    BloodOath.all.map do |bloodoath|
+      bloodoath.cult
     end.uniq
+  end
+
+  def self.most_common_location
+    return all.each_with_object(Hash.new(0)) { |h, o| o[h.location] += 1 }.max_by { |_, v| v }
   end
 
   def self.all

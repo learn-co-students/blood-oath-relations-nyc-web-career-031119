@@ -12,6 +12,7 @@ end
 
 cult1 = Cult.new('BBBBB', "NYC", 11111111, "efgdfhdfghfyuhfgdjgfj")
 cult2 = Cult.new('AAAAA', "NYC", 1992, "asdf")
+cult3 = Cult.new('AAAAA', "LA", 1992, "asdf")
 
 follower1 = Follower.new('john', 5,  '2345')
 follower2 = Follower.new('peter', 26,  '1234')
